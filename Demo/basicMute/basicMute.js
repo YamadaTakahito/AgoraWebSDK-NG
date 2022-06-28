@@ -140,7 +140,7 @@ async function subscribe(user, mediaType) {
           <p class="player-name">remoteUser(${uid})</p>
           <div id="player-${uid}" class="player"></div>
           <div id="slider-${uid}" style="margin: 10px; width: 300px;"></div>
-          <div id="slider-value-${uid}" style="margin: 5px">value: 100</div>
+          <div id="slider-value-${uid}" style="margin: 5px">volume: 100</div>
         </div>
       `);
       $("#remote-playerlist").append(player);
@@ -152,7 +152,7 @@ async function subscribe(user, mediaType) {
 
         change: function( event, ui ) {
           user.audioTrack.setVolume(ui.value)
-          $(`#slider-value-${uid}`).html("value："+ui.value);
+          $(`#slider-value-${uid}`).html("volume："+ui.value);
         }
       });
     }
