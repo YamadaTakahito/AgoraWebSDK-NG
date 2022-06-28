@@ -139,7 +139,7 @@ async function subscribe(user, mediaType) {
         <div id="player-wrapper-${uid}" style="width: 440px">
           <p class="player-name">remoteUser(${uid})</p>
           <div id="player-${uid}" class="player"></div>
-          <div id="slider-${uid}" style="margin: 10px"></div>
+          <div id="slider-${uid}" style="margin: 10px; width: 300px;"></div>
           <div id="slider-value-${uid}" style="margin: 5px">value: 100</div>
         </div>
       `);
