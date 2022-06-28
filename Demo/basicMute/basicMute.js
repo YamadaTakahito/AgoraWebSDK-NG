@@ -92,7 +92,7 @@ async function join() {
   ]);
 
   showMuteButton();
-  
+
   // play local video track
   localTracks.videoTrack.play("local-player");
   $("#local-player-name").text(`localVideo(${options.uid})`);
@@ -136,12 +136,25 @@ async function subscribe(user, mediaType) {
   if (mediaType === 'video') {
     if ($(`#player-wrapper-${uid}`).length === 0) {
       const player = $(`
-        <div id="player-wrapper-${uid}">
+        <div id="player-wrapper-${uid}" style="width: 440px">
           <p class="player-name">remoteUser(${uid})</p>
           <div id="player-${uid}" class="player"></div>
+          <div id="slider-${uid}" style="margin: 10px"></div>
+          <div id="slider-value-${uid}" style="margin: 5px">value: 100</div>
         </div>
       `);
       $("#remote-playerlist").append(player);
+      $(`#slider-${uid}`).slider({
+        max: 200, //最大値
+        min: 0, //最小値
+        value: 100, //初期値
+        step: 1, //幅
+
+        change: function( event, ui ) {
+          user.audioTrack.setVolume(ui.value)
+          $(`#slider-value-${uid}`).html("value："+ui.value);
+        }
+      });
     }
 
     // play the remote video.
